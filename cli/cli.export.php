@@ -132,7 +132,7 @@ class tx_cliexport_cli extends t3lib_cli {
 		// get workspace ID
 		//$wsId = (string)$this->cli_args['_DEFAULT'][4];
 		$wsId = isset($this->cli_args['--workspace']) ? $this->cli_args['--workspace'][0] : '0';
-		if (t3lib_div::testInt($wsId) === FALSE) {
+		if (TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($wsId) === FALSE) {
 			$this->cli_echo($lang->getLL('error.workspace_id_int.msg') . "\n");
 			exit;
 		}
@@ -146,12 +146,12 @@ class tx_cliexport_cli extends t3lib_cli {
 
 		if ($format == 'CATXML') {
 			foreach ($l10ncfgs as $l10ncfg) {
-				if (t3lib_div::testInt($l10ncfg) === FALSE) {
+				if (TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($l10ncfg) === FALSE) {
 					$this->cli_echo($lang->getLL('error.l10ncfg_id_int.msg') . "\n");
 					exit;
 				}
 				foreach ($tlangs as $tlang) {
-					if (t3lib_div::testInt($tlang) === FALSE) {
+					if (TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($tlang) === FALSE) {
 						$this->cli_echo($lang->getLL('error.target_language_id_integer.msg') . "\n");
 						exit;
 					}
@@ -160,12 +160,12 @@ class tx_cliexport_cli extends t3lib_cli {
 			}
 		} elseif ($format == 'EXCEL') {
 			foreach ($l10ncfgs as $l10ncfg) {
-				if (t3lib_div::testInt($l10ncfg) === FALSE) {
+				if (TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($l10ncfg) === FALSE) {
 					$this->cli_echo($lang->getLL('error.l10ncfg_id_int.msg') . "\n");
 					exit;
 				}
 				foreach ($tlangs as $tlang) {
-					if (t3lib_div::testInt($tlang) === FALSE) {
+					if (TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($tlang) === FALSE) {
 						$this->cli_echo($lang->getLL('error.target_language_id_integer.msg') . "\n");
 						exit;
 					}
