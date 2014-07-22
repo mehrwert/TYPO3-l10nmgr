@@ -54,7 +54,7 @@ class tx_cliexport_cli extends t3lib_cli {
 	function tx_cliexport_cli() {
 
 		// Running parent class constructor
-		parent::t3lib_cli();
+		parent::__construct();
 
 		// Adding options to help archive:
 		$this->cli_options[] = array('--format', 'Format for export of translatable data', "The value can be:\n  CATXML = XML for translation tools (default)\n  EXCEL = Microsoft XML format \n");
